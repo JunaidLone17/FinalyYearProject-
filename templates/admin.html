@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Data Table</title>
+    <style>
+      table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      th {
+        background-color: blue;
+        color: white;
+      }
+
+      th,
+      td {
+        padding: 8px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+      }
+      img {
+        max-width: 100px;
+        max-height: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Valid</th>
+          <th>Type 1</th>
+          <th>File</th>
+          <!-- Add more columns as needed -->
+        </tr>
+      </thead>
+      <tbody>
+        {% for item in data %}
+        <tr>
+          <td>{{ item.name }}</td>
+          <td>{{ item.isValid }}</td>
+          <td>{{ item.DocType }}</td>
+          <td>
+            <img
+              src="{{ url_for('static', filename='Submitteddata/' + item.path) }}"
+            />
+          </td>
+          <!-- Retrieve and display more columns as needed -->
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </body>
+</html>
